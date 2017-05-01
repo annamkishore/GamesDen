@@ -1,0 +1,21 @@
+<div>
+  <div class="well" style="padding: 5px; padding-left: 20px">
+    <h1>Tap Tap.. </h1>
+    See how fast you can tap in a sequence
+    <button class="btn btn-default pull-right" style="margin-top: -15px" (click)="reset()">Reset</button>
+  </div>
+
+  <div *ngFor="let tile of tiles;">
+    <div class="col-xs-3" style="margin-bottom: 1em">
+      <button class="btn btn-primary" id="{{tile.index}}" style="width: 5em; height: 5em;"
+              (click)="onTap(tile.index)">
+        <h3>{{tile.item}}</h3>
+      </button>
+    </div>
+  </div>
+
+  <span>.</span>
+  <div class="well" style="padding: 5px; padding-left: 20px">
+    Time: {{timeMsg || "0m 0s"}}
+  </div>
+</div>

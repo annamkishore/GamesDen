@@ -1,8 +1,13 @@
 {
   "name": "games-den",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "ngBuildProd": "ng build --target=production --environment=prod --output-path cordova/www/ --base-href .",
+    "corBuildAndr": "cd cordova && cordova build android",
+    "ngServeH": "ng serve --host 192.168.1.4",
+    "corRunBrowser": "cd cordova && cordova run browser",
+    "generateApk": "npm run ngBuildProd && npm run corBuildAndr",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
