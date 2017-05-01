@@ -35,7 +35,6 @@ export class TapMeComponent implements OnInit {
   }
 
   onTap(currIndex) {
-    this.gameOver();
     if (this.tapped + 1 === currIndex) {
       // remove button
       // event.target.parentElement.style.display = "none";
