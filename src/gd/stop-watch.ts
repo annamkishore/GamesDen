@@ -1,9 +1,8 @@
-import {factoryOrValue} from "rxjs/operator/multicast";
 /**
  * StopWatch
  */
 export class StopWatch {
-  elapsed: any;
+  elapsed: Elapsed;
   timerObj: any;
   delay: number;
 
@@ -27,12 +26,12 @@ export class StopWatch {
   }
 
   public reset() {
-    this.elapsed = 0;
+    this.elapsed = new Elapsed();
     clearInterval(this.timerObj);
   }
 }
 
-class Elapsed {
+export class Elapsed {
   value: number;
 
   constructor() {

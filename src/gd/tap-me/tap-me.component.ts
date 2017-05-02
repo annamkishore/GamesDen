@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {StopWatch} from '../stop-watch';
+import {Elapsed, StopWatch} from '../stop-watch';
 // import {clearInterval} from "timers";
 
 @Component({
@@ -10,10 +10,11 @@ import {StopWatch} from '../stop-watch';
 export class TapMeComponent implements OnInit {
 
   tiles: any;
-  tapped: any;
-  gameWatch: StopWatch;
-  elapsedObj: string;
+  currTappedTileIndex: number;
   gameMessage: string;
+
+  gameWatch: StopWatch;
+  elapsedObj: Elapsed;
 
   constructor(private elRef: ElementRef) {
   }
@@ -32,7 +33,7 @@ export class TapMeComponent implements OnInit {
     }
 
     this.gameMessage = null;
-    this.tapped = -1;
+    this.currTappedTileIndex = -1;
     this.gameWatch = new StopWatch(1);
     this.gameWatch.start();
     this.elapsedObj = this.gameWatch.elapsed;
@@ -42,13 +43,13 @@ export class TapMeComponent implements OnInit {
    * @param currIndex
    */
   onTap(currIndex) {
-    if (this.tapped + 1 === currIndex) {
+    if (this.currTappedTileIndex + 1 === currIndex) {
       // hide button
       this.elRef.nativeElement.querySelectorAll("button[id='" + currIndex + "']")[0].style.visibility = "hidden";
-      this.tapped++;
-      console.log(this.tapped);
+      this.currTappedTileIndex++;
+      console.log(this.currTappedTileIndex);
     }
-    if (this.tapped === this.tiles.length - 1) {
+    if (this.currTappedTileIndex === this.tiles.length - 1) {
       this.gameOver();
     }
   }
@@ -59,7 +60,6 @@ export class TapMeComponent implements OnInit {
   gameOver() {
     this.gameWatch.stop();
     this.gameMessage = " -- Congratulations!!";
-    // this.timeMsg = (this.elapsed/60).toFixed() + "m " + (this.elapsed%60) + "s" + " -- Congratulations!!";
   }
 
   /**
