@@ -2,7 +2,7 @@
   <div class="well" style="padding: 5px; padding-left: 20px">
     <h1>Tap Tap.. </h1>
     See how fast you can tap in a sequence
-    <button class="btn btn-default pull-right" style="margin-top: -15px" (click)="reset()">Reset</button>
+    <button class="btn btn-default pull-right" style="margin-top: -15px" (click)="restart()">Restart</button>
   </div>
 
   <div *ngFor="let tile of tiles;">
@@ -16,6 +16,7 @@
 
   <span>.</span>
   <div class="well" style="padding: 5px; padding-left: 20px">
-    Time: {{timeMsg || "0m 0s"}}
+    Time: {{elapsedObj.toString()}}
+    <span> {{gameMessage}} </span>
   </div>
 </div>

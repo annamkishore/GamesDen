@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
+import {StopWatch} from '../stop-watch';
 // import {clearInterval} from "timers";
 
 @Component({
@@ -9,8 +10,10 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 export class TapMeComponent implements OnInit {
 
   tiles: any;
-
   tapped: any;
+  gameWatch: StopWatch;
+  elapsedObj: string;
+  gameMessage: string;
 
   constructor(private elRef: ElementRef) {
   }
@@ -28,16 +31,19 @@ export class TapMeComponent implements OnInit {
       this.tiles[i] = letters1[i];
     }
 
+    this.gameMessage = null;
     this.tapped = -1;
-    this.elapsed = 0;
-    this.timeMsg = null;
-    this.tick();
+    this.gameWatch = new StopWatch(1);
+    this.gameWatch.start();
+    this.elapsedObj = this.gameWatch.elapsed;
   }
 
+  /**
+   * @param currIndex
+   */
   onTap(currIndex) {
     if (this.tapped + 1 === currIndex) {
-      // remove button
-      // event.target.parentElement.style.display = "none";
+      // hide button
       this.elRef.nativeElement.querySelectorAll("button[id='" + currIndex + "']")[0].style.visibility = "hidden";
       this.tapped++;
       console.log(this.tapped);
@@ -47,11 +53,29 @@ export class TapMeComponent implements OnInit {
     }
   }
 
+  /**
+   * gameOver
+   */
   gameOver() {
-    clearInterval(this.timerObj);
-    this.timeMsg = (this.elapsed/60).toFixed() + "m " + (this.elapsed%60) + "s" + " -- Congratulations!!";
+    this.gameWatch.stop();
+    this.gameMessage = " -- Congratulations!!";
+    // this.timeMsg = (this.elapsed/60).toFixed() + "m " + (this.elapsed%60) + "s" + " -- Congratulations!!";
   }
 
+  /**
+   * restart
+   */
+  restart() {
+    this.gameWatch.reset();
+    this.ngOnInit();
+  }
+
+  /**
+   * shuffle
+   * @param array
+   * @param shuffleLength
+   * @returns {any}
+   */
   shuffle(array, shuffleLength?) {
     let currentIndex = shuffleLength ? shuffleLength : array.length, temporaryValue, randomIndex;
 
@@ -66,17 +90,5 @@ export class TapMeComponent implements OnInit {
     }
 
     return array;
-  }
-
-  timeMsg: any;
-  elapsed: any;
-  timerObj: any;
-  tick() {
-    this.timerObj = setInterval(() => {this.elapsed++; this.timeMsg=(this.elapsed/60).toFixed() + "m " + (this.elapsed%60) + "s"}, 1 * 1000);
-  }
-
-  reset() {
-    clearInterval(this.timerObj);
-    this.ngOnInit();
   }
 }
