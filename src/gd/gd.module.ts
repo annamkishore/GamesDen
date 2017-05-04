@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {TapMeComponent} from './tap-me/tap-me.component';
+import {TapMeSettingsComponent} from './settings/tap-me.settings.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    TapMeComponent
+    TapMeComponent,
+    TapMeSettingsComponent
   ],
   exports: [
-    TapMeComponent
+    TapMeComponent,
+    TapMeSettingsComponent
   ]
 })
-export class GdModule { }
+export class GdModule {
+}

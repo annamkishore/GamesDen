@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Elapsed, StopWatch} from '../stop-watch';
-// import {clearInterval} from "timers";
+// import {Router} from '@angular/router';
 
 @Component({
   selector: 'gd-tap-me',
@@ -68,6 +68,10 @@ export class TapMeComponent implements OnInit {
   restart() {
     this.gameWatch.reset();
     this.ngOnInit();
+  }
+
+  showSettings() {
+    // this.router.navigateByUrl("/gd-settings");
   }
 
   /**
