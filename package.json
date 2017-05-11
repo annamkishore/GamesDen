@@ -5,11 +5,11 @@
   "scripts": {
     "ngBuildProd": "ng build --target=production --environment=prod --output-path cordova/www/ --base-href .",
     "corBuildAndr": "cd cordova && cordova build android",
-    "ngServeH": "ng serve --host 192.168.1.4",
+    "ngServeH": "ng serve --host 192.168.43.171",
     "corRunBrowser": "cd cordova && cordova run browser",
     "generateApk": "npm run ngBuildProd && npm run corBuildAndr",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

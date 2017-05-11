@@ -1,0 +1,26 @@
+<div>
+<!--<nav class="navbar navbar-default">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="navbar-header">-->
+      <!--<a class="navbar-brand">TapMe Settings</a>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+
+<div class="container-fluid">
+  <div class="row">
+    <label class="col-xs-4" style="padding-right: 0px">Select Language</label>
+    <div class="col-xs-8">
+      <select  class="form-control" id="select1" [(ngModel)]="selectedMode" (change)="onChange()">
+        <option *ngFor="let mode of taptapMode" [value]=mode.name>{{mode.display}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div align="center" style="padding-top: 5em">
+      <button class="btn btn-primary">Back</button>
+    </div>
+  </div>
+</div>
+</div>

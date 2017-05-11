@@ -1,13 +1,20 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Elapsed, StopWatch} from '../stop-watch';
-// import {Router} from '@angular/router';
+import {UtilServiceService} from "../util-service.service";
 
 @Component({
   selector: 'gd-tap-me',
   templateUrl: './tap-me.component.html',
-  styleUrls: ['./tap-me.component.css']
+  styleUrls: ['./tap-me.component.css'],
+  providers: [UtilServiceService]
 })
 export class TapMeComponent implements OnInit {
+
+  @Input()
+  mode: string;
+
+  @Input()
+  gridSize: number;
 
   tiles: any;
   currTappedTileIndex: number;
@@ -16,19 +23,24 @@ export class TapMeComponent implements OnInit {
   gameWatch: StopWatch;
   elapsedObj: Elapsed;
 
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef, private utilService: UtilServiceService) {
   }
 
   ngOnInit() {
-    let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-      't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    letters = ['అ', 'ఆ', 'ఇ', 'ఈ', 'ఉ', 'ఊ', 'ఋ', 'ౠ', 'ఎ', 'ఏ', 'ఐ', 'ఒ', 'ఓ', 'ఔ', 'అం', 'అః'];
+    const tappingModeMap = {
+      'telugu': ['అ', 'ఆ', 'ఇ', 'ఈ', 'ఉ', 'ఊ', 'ఋ', 'ౠ', 'ఎ', 'ఏ', 'ఐ', 'ఒ', 'ఓ', 'ఔ', 'అం', 'అః'],
+      'english-lower': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z'],
+      'english': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+        'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    };
+
+    const letters = tappingModeMap[this.mode];
     let letters1 = [];
-    letters.map((item, index) => letters1.push({index, item}) );
-    // letters1 = this.shuffle(letters1, 20);
-    letters1 = this.shuffle(letters1);
+    letters.map((item, index) => letters1.push({index, item}));
+    letters1 = this.utilService.shuffle(letters1, this.gridSize);
     this.tiles = [];
-    for (let i = 0; i < letters1.length; i++) {
+    for (let i = 0; i < this.gridSize; i++) {
       this.tiles[i] = letters1[i];
     }
 
@@ -45,7 +57,7 @@ export class TapMeComponent implements OnInit {
   onTap(currIndex) {
     if (this.currTappedTileIndex + 1 === currIndex) {
       // hide button
-      this.elRef.nativeElement.querySelectorAll("button[id='" + currIndex + "']")[0].style.visibility = "hidden";
+      this.elRef.nativeElement.querySelectorAll('button[id=\'' + currIndex + '\']')[0].style.visibility = 'hidden';
       this.currTappedTileIndex++;
       console.log(this.currTappedTileIndex);
     }
@@ -59,7 +71,7 @@ export class TapMeComponent implements OnInit {
    */
   gameOver() {
     this.gameWatch.stop();
-    this.gameMessage = " -- Congratulations!!";
+    this.gameMessage = ' -- Congratulations!!';
   }
 
   /**
@@ -70,29 +82,4 @@ export class TapMeComponent implements OnInit {
     this.ngOnInit();
   }
 
-  showSettings() {
-    // this.router.navigateByUrl("/gd-settings");
-  }
-
-  /**
-   * shuffle
-   * @param array
-   * @param shuffleLength
-   * @returns {any}
-   */
-  shuffle(array, shuffleLength?) {
-    let currentIndex = shuffleLength ? shuffleLength : array.length, temporaryValue, randomIndex;
-
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
 }
