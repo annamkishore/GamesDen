@@ -7,6 +7,6 @@
   </div>
 
   <!--<router-outlet></router-outlet>-->
-  <gd-tap-me [mode]="gameMode" [gridSize]="16" *ngIf="!settingsShowFlag"></gd-tap-me>
+  <gd-tap-me [mode]="gameMode" [gridSize]="16" *ngIf="!settingsShowFlag" [restartFlag]="restartGame"></gd-tap-me>
   <gd-tap-me-settings *ngIf="settingsShowFlag" (modeSelectedOut)="onModeSelected($event)" [selectedMode]="gameMode"></gd-tap-me-settings>
 </div>

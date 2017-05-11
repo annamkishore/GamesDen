@@ -13,9 +13,12 @@ export class TapMeSettingsComponent implements OnInit, AfterContentInit {
   @Input()
   selectedMode: any = 'english';
 
-  taptapMode = [{name: 'telugu', display: 'telugu: t, e'},
-    {name: 'hindi', display: 'hindi: h, i'},
-    {name: 'english', display: 'english: a, b'}];
+  taptapMode = [
+    {name: 'telugu', display: 'telugu: అ, ఆ'},
+    {name: 'hindi', display: 'hindi: अ, आ'},
+    {name: 'english', display: 'english: A, B'},
+    {name: 'english-lower', display: 'english: a, b'}
+  ];
 
   constructor() {
   }

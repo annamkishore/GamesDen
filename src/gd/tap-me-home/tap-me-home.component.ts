@@ -12,6 +12,8 @@ export class TapMeHomeComponent implements OnInit {
   settingsShowFlag = false;
   gameMode = 'english';
 
+  restartGame = true; // just a flag
+
   constructor(private utilService: UtilServiceService) {
   }
 
@@ -23,6 +25,7 @@ export class TapMeHomeComponent implements OnInit {
   }
 
   restart() {
+    this.restartGame = !this.restartGame;
   }
 
   onModeSelected(event) {
