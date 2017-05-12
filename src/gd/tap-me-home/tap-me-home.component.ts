@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
-import {UtilServiceService} from "../util-service.service";
+import {Component, ElementRef, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {UtilServiceService} from '../util-service.service';
 
 @Component({
   selector: 'gd-tap-me-home',
@@ -14,7 +14,7 @@ export class TapMeHomeComponent implements OnInit {
 
   restartGame = true; // just a flag
 
-  constructor(private utilService: UtilServiceService) {
+  constructor(private elRef: ElementRef, private utilService: UtilServiceService) {
   }
 
   ngOnInit() {
@@ -22,6 +22,7 @@ export class TapMeHomeComponent implements OnInit {
 
   showSettings() {
     this.settingsShowFlag = !this.settingsShowFlag;
+    this.elRef.nativeElement.querySelector('a').text = this.settingsShowFlag ? 'Back' : 'Settings';
   }
 
   restart() {
