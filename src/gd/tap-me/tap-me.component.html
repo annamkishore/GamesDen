@@ -1,8 +1,8 @@
-<div *ngFor="let tile of tiles;">
+<div *ngFor="let tileDataObj of tilesDataList;">
   <div class="col-xs-3" style="margin-bottom: 1em">
-    <button class="btn btn-primary" id="{{tile.index}}" style="width: 5em; height: 5em;"
-            (click)="onTap(tile.index)">
-      <h3>{{tile.item}}</h3>
+    <button class="btn btn-primary" id="{{tileDataObj.index}}" style="width: 5em; height: 5em;"
+            (click)="onTap(tileDataObj.index)">
+      <h3>{{tileDataObj.item}}</h3>
     </button>
   </div>
 </div>
