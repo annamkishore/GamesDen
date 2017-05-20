@@ -29,6 +29,8 @@ export class TapMeComponent implements OnInit, OnChanges {
   visibleLetterIndex: number;
   lettersMap: any;
 
+  currentTappedLetter: any;
+
   constructor(private elRef: ElementRef, private utilService: UtilServiceService) {
   }
 
@@ -71,6 +73,7 @@ export class TapMeComponent implements OnInit, OnChanges {
     this.gameWatch = new StopWatch();
     this.gameWatch.start();
     this.elapsedObj = this.gameWatch.elapsed;
+    this.currentTappedLetter = null;
   }
 
   /**
@@ -78,6 +81,7 @@ export class TapMeComponent implements OnInit, OnChanges {
    */
   onTap(currLetterIndex) {
     if ((this.currTappedTileIndex + 1) % this.gridSize === currLetterIndex) {
+      this.currentTappedLetter = this.elRef.nativeElement.querySelector('button[id=\'' + currLetterIndex + '\'] h3').innerText;
       if (this.visibleLetterIndex < this.lettersMap.length) {
         // show new button
         this.elRef.nativeElement.querySelector('button[id=\'' + currLetterIndex + '\'] h3').innerText = this.lettersMap[this.visibleLetterIndex].item;
@@ -98,7 +102,7 @@ export class TapMeComponent implements OnInit, OnChanges {
    */
   gameOver() {
     this.gameWatch.stop();
-    this.gameMessage = ' -- Congratulations!!';
+    this.gameMessage = 'Congrats, ' + this.mode + ' completed, in ' + this.elapsedObj.toString();
   }
 
   /**

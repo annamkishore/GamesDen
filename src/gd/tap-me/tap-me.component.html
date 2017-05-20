@@ -9,6 +9,11 @@
 
 <span>.</span>
 <div class="well col-xs-12" style="padding: 5px; padding-left: 20px">
-  Time: {{elapsedObj.toString()}}
-  <span> {{gameMessage}} </span>
+  <div class="col-xs-4" *ngIf="!gameMessage">
+    Timer: {{elapsedObj.toString()}}
+  </div>
+  <div class="col-xs-8">
+    <span> {{gameMessage}} </span>
+    <span *ngIf="!gameMessage"> {{currentTappedLetter ? "Tapped:" + currentTappedLetter : ""}} </span>
+  </div>
 </div>

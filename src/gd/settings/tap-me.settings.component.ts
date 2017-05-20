@@ -18,7 +18,7 @@ export class TapMeSettingsComponent implements OnInit, AfterContentInit {
     {name: 'hindi', display: 'hindi: अ, आ'},
     {name: 'english', display: 'english: A, B'},
     {name: 'english-lower', display: 'english: a, b'},
-    {name: 'numbers', display: 'numbers: 1, 2'}
+    {name: 'numbers', display: 'numbers: 1, 2..32'}
   ];
 
   constructor() {
