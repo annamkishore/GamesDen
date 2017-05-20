@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.kish.gamesden" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.kish.gamesden"
+        version="1.0.0"
+        android-versionCode="1"
+        xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>GamesDen</name>
     <description>
         Simple games yet fun, crazy..
@@ -20,4 +23,9 @@
         <allow-intent href="market:*" />
         <icon src="www/assets/images/app-icon.png" />
     </platform>
+    <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-targetSdkVersion" value="25" />
 </widget>
