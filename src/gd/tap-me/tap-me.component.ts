@@ -49,18 +49,18 @@ export class TapMeComponent implements OnInit, OnChanges {
       this.gridSize = 13;
     }
 
-    const letters = tappingModeMap[this.mode];
-    let letters1 = [];
-    letters.map((item, index) => letters1.push({index, item}));
-    letters1 = this.utilService.shuffle(letters1, this.gridSize);
+    let lettersMap = [];
+    tappingModeMap[this.mode].map((item, index) => lettersMap.push({index, item}));
+    const shuffleLength = lettersMap.length > this.gridSize ? this.gridSize : lettersMap.length
+    lettersMap = this.utilService.shuffle(lettersMap, shuffleLength);
     this.tiles = [];
-    for (let i = 0; i < this.gridSize; i++) {
-      this.tiles[i] = letters1[i];
+    for (let i = 0; i < shuffleLength; i++) {
+      this.tiles[i] = lettersMap[i];
     }
 
     this.gameMessage = null;
     this.currTappedTileIndex = -1;
-    this.gameWatch = new StopWatch(1);
+    this.gameWatch = new StopWatch();
     this.gameWatch.start();
     this.elapsedObj = this.gameWatch.elapsed;
   }

@@ -3,7 +3,7 @@
     <h1>Tap Tap.. </h1>
     See how fast you can tap in a sequence
     <a class="btn btn-default pull-right" style="margin-top: -55px; width: 5em" (click)="showSettings()">Settings</a>
-    <button class="btn btn-default pull-right" style="margin-top: -15px; width: 5em" (click)="restart()">Restart</button>
+    <button class="btn btn-default pull-right" style="margin-top: -15px; width: 5em" (click)="restart()" *ngIf="!settingsShowFlag">Restart</button>
   </div>
 
   <!--<router-outlet></router-outlet>-->

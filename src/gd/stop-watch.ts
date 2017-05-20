@@ -1,5 +1,5 @@
 /**
- * StopWatch
+ * class: StopWatch
  */
 export class StopWatch {
   elapsed: Elapsed;
@@ -9,7 +9,7 @@ export class StopWatch {
   /**
    * @param delay - in seconds
    */
-  public constructor(delay: number) {
+  public constructor(delay: number = 1) {
     this.elapsed = new Elapsed();
     this.delay = delay;
   }
@@ -31,8 +31,11 @@ export class StopWatch {
   }
 }
 
+/**
+ * class: Elapsed
+ */
 export class Elapsed {
-  value: number;
+  value: number;    // in seconds
 
   constructor() {
     this.value = 0;
