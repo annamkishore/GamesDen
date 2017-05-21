@@ -24,7 +24,7 @@
         <icon src="www/assets/images/app-icon.png" />
     </platform>
     <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
-    <preference name="Fullscreen" value="true" />
+    <!--<preference name="Fullscreen" value="true" />-->
     <preference name="Orientation" value="portrait" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="android-targetSdkVersion" value="25" />
