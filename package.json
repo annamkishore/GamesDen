@@ -13,7 +13,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "s1-unsignedApk": "cordova build --release android",
+    "s2-keyGenONCE": "keytool -genkey -v -keystore gamesden.keystore -alias gamesdenkey -keyalg RSA -keysize 2048 -validity 10000",
+    "s3-signApk": "cd cordova/platforms/android/build/outputs/apk && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore gamesden.keystore android-release-unsigned.apk gamesdenkey",
+    "s4-zipalign": "cd cordova/platforms/android/build/outputs/apk && D:/__inst/Android/sdk1/build-tools/25.0.2/zipalign -v 4 android-release-unsigned.apk GamesDen.apk"
   },
   "private": true,
   "dependencies": {
