@@ -7,6 +7,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {TapMeComponent} from './tap-me/tap-me.component';
 import {TapMeSettingsComponent} from './settings/tap-me.settings.component';
 import {TapMeHomeComponent} from './tap-me-home/tap-me-home.component';
+import {SmartSlateComponent} from './smart-slate/smart-slate.component';
 
 const appRoutes: Routes = [
   {path: 'tapme', component: TapMeComponent},
@@ -23,12 +24,14 @@ const appRoutes: Routes = [
   declarations: [
     TapMeComponent,
     TapMeSettingsComponent,
-    TapMeHomeComponent
+    TapMeHomeComponent,
+    SmartSlateComponent
   ],
   exports: [
     TapMeComponent,
     TapMeSettingsComponent,
-    TapMeHomeComponent
+    TapMeHomeComponent,
+    SmartSlateComponent
   ]
 })
 export class GdModule {
