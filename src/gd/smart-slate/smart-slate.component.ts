@@ -18,6 +18,7 @@ export class SmartSlateComponent implements OnInit {
 
   penColor: any;
   bgColor: any;
+  penSize: number;
 
   constructor() {
   }
@@ -46,6 +47,7 @@ export class SmartSlateComponent implements OnInit {
     this.penColor = '#FFFFFF';
     this.bgColor = '#000000';
     this.setBgColor();
+    this.penSize = 1;
   }
 
   setBgColor() {
@@ -68,8 +70,8 @@ export class SmartSlateComponent implements OnInit {
 
     this.ctx.beginPath();
 
-    // this.ctx.lineWidth = '1';
-    // this.ctx.lineJoin = 'round';
+    this.ctx.lineWidth = this.penSize;
+    this.ctx.lineJoin = 'round';
 
     if (isPoint) {
       this.ctx.arc(currX, currY, 1 / 2, 0, 2 * Math.PI);

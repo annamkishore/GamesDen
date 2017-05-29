@@ -3,8 +3,16 @@
   </canvas>
 </div>
 <div>
-  <button class="btn" (click)="clear()">Clear</button>
-  <input type="color" [(ngModel)]="penColor" value="#FFFFFF"/>
-  <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()"/>
+  <div class="col-xs-6" style="padding: 0px">
+    <button class="btn" (click)="clear()">Clear</button>
+    <input type="color" [(ngModel)]="penColor" value="#FFFFFF"/>
+    <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()"/>
+  </div>
+  <div class="col-xs-1">
+  {{penSize}}
+  </div>
+  <div class="col-xs-5" style="padding: 0px">
+    <input type="range" id="penSize" min="1" max="100" [(ngModel)]="penSize" style="width: 100px;"/>
+  </div>
 </div>
 
