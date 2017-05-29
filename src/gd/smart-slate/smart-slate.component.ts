@@ -16,6 +16,9 @@ export class SmartSlateComponent implements OnInit {
   lastY: number;
   mousePressed: boolean;
 
+  penColor: any;
+  bgColor: any;
+
   constructor() {
   }
 
@@ -39,6 +42,14 @@ export class SmartSlateComponent implements OnInit {
     this.ctx = this.canvasElement.getContext('2d');
     this.width = this.canvasElement.width;
     this.height = this.canvasElement.height;
+
+    this.penColor = '#FFFFFF';
+    this.bgColor = '#000000';
+    this.setBgColor();
+  }
+
+  setBgColor() {
+    this.canvasElement.style.backgroundColor = this.bgColor;
   }
 
   draw(e, isPoint) {
@@ -67,7 +78,7 @@ export class SmartSlateComponent implements OnInit {
       this.ctx.lineTo(currX, currY);
     }
 
-    this.ctx.strokeStyle = 'red';
+    this.ctx.strokeStyle = this.penColor;
     this.ctx.stroke();
     this.ctx.closePath();
 

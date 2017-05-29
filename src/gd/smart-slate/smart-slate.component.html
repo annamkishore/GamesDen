@@ -1,4 +1,10 @@
-<canvas id="myCanvas" width="500" height="500" style="border: 1px solid">
-</canvas>
-<!--<button class="btn" (click)="drawLine()">Line 2</button>-->
-<button class="btn" (click)="clear()">Clear</button>
+<div>
+  <canvas id="myCanvas" width="350" height="550" style="border: 1px solid;">
+  </canvas>
+</div>
+<div>
+  <button class="btn" (click)="clear()">Clear</button>
+  <input type="color" [(ngModel)]="penColor" value="#FFFFFF"/>
+  <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()"/>
+</div>
+
