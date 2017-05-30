@@ -47,7 +47,7 @@ export class SmartSlateComponent implements OnInit {
     this.penColor = '#FFFFFF';
     this.bgColor = '#000000';
     this.setBgColor();
-    this.penSize = 1;
+    this.penSize = 10;
   }
 
   setBgColor() {
@@ -57,7 +57,7 @@ export class SmartSlateComponent implements OnInit {
   draw(e, isPoint) {
     let currX, currY, oneFingerTouch;
     if (e instanceof TouchEvent) {
-      if ( e.targetTouches.length == 1 ) { // One finger
+      if ( e.targetTouches.length === 1 ) { // One finger
         oneFingerTouch = e.targetTouches[0];
         currX = oneFingerTouch.pageX;
         currY = oneFingerTouch.pageY;
@@ -66,32 +66,24 @@ export class SmartSlateComponent implements OnInit {
       currX = e.pageX;
       currY = e.pageY;
     }
-    // console.log(e.pageX + ', ' + e.pageY);
 
     this.ctx.beginPath();
-
-    this.ctx.lineWidth = this.penSize;
-    this.ctx.lineJoin = 'round';
-
     if (isPoint) {
-      this.ctx.arc(currX, currY, 1 / 2, 0, 2 * Math.PI);
+      this.ctx.arc(currX, currY, this.penSize / 2, 0, 2 * Math.PI);
+      this.ctx.fillStyle = this.penColor;
+      this.ctx.fill();
     } else {
+      this.ctx.lineWidth = this.penSize;
+      // this.ctx.lineJoin = 'round';
       this.ctx.moveTo(this.lastX, this.lastY);
       this.ctx.lineTo(currX, currY);
+      this.ctx.strokeStyle = this.penColor;
+      this.ctx.stroke();
+      this.ctx.closePath();
     }
-
-    this.ctx.strokeStyle = this.penColor;
-    this.ctx.stroke();
-    this.ctx.closePath();
 
     this.lastX = currX;
     this.lastY = currY;
-  }
-
-  drawLine() {
-    // this.ctx.moveTo(5, 5);
-    // this.ctx.lineTo(100, 100);
-    // this.ctx.stroke();
   }
 
   clear() {
