@@ -73,13 +73,14 @@ export class SmartSlateComponent implements OnInit {
       this.ctx.fillStyle = this.penColor;
       this.ctx.fill();
     } else {
-      this.ctx.lineWidth = this.penSize;
-      // this.ctx.lineJoin = 'round';
       this.ctx.moveTo(this.lastX, this.lastY);
       this.ctx.lineTo(currX, currY);
+      this.ctx.closePath();
+
+      this.ctx.lineJoin = 'round';
+      this.ctx.lineWidth = this.penSize;
       this.ctx.strokeStyle = this.penColor;
       this.ctx.stroke();
-      this.ctx.closePath();
     }
 
     this.lastX = currX;
