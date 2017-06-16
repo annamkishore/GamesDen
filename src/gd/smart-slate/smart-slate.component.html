@@ -1,11 +1,11 @@
 <div>
-  <canvas id="myCanvas" width="350" height="550" style="border: 1px solid;">
+  <canvas id="myCanvas" [width]="width" [height]="height">
   </canvas>
 </div>
 <div>
-  <div class="col-xs-4" style="padding: 0px">
-    <button class="btn" (click)="clear()" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Clear</button>
-    <input type="color" [(ngModel)]="penColor" value="#FFFFFF" style="height: 2em; width: 3em; border-radius: 4px"/>
+  <div class="col-xs-6" style="padding: 0px">
+    <button id="clearButton" class="btn" (click)="clear()" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Clear</button>
+    <input id="bgColorButton" type="color" [(ngModel)]="penColor" value="#FFFFFF" style="height: 2em; width: 3em; border-radius: 4px"/>
     <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()" style="height: 2em; width: 3em; border-radius: 4px"/>
   </div>
   <div class="col-xs-1">

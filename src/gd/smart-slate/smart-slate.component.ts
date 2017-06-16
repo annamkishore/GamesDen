@@ -25,6 +25,9 @@ export class SmartSlateComponent implements OnInit {
 
   ngOnInit() {
     this.init();
+    this.width = window.innerWidth;
+    const buttonHeight = document.getElementById('bgColorButton').offsetHeight / 2;
+    this.height = window.innerHeight - (buttonHeight * 3);
   }
 
   init() {
@@ -41,8 +44,6 @@ export class SmartSlateComponent implements OnInit {
     this.canvasElement.addEventListener('mouseout', e => this.mousePressed = false);
 
     this.ctx = this.canvasElement.getContext('2d');
-    this.width = this.canvasElement.width;
-    this.height = this.canvasElement.height;
 
     this.penColor = '#FFFFFF';
     this.bgColor = '#000000';
