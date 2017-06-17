@@ -7,6 +7,10 @@
     <button id="clearButton" class="btn" (click)="clear()" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Clear</button>
     <input id="bgColorButton" type="color" [(ngModel)]="penColor" value="#FFFFFF" style="height: 2em; width: 3em; border-radius: 4px"/>
     <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()" style="height: 2em; width: 3em; border-radius: 4px"/>
+
+    <button (click)="setPenStyle(0)" class="btn" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Basic</button>
+    <button (click)="setPenStyle(1)" class="btn" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Web</button>
+    <button (click)="setPenStyle(2)" class="btn" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Pattern</button>
   </div>
   <div class="col-xs-1">
   {{penSize}}
