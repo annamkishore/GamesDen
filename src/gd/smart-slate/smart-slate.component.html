@@ -7,16 +7,16 @@
 <div style="position: fixed; bottom: 10px; right: 10px;">
   <span *ngIf="showSettings">
     <span>
-      <button id="clearButton" class="btn" (click)="clear()" style="height: 2em; width: 3em; padding: 0px; vertical-align: top">Clear</button>
-      <input id="bgColorButton" type="color" [(ngModel)]="penColor" value="#FFFFFF" style="height: 2em; width: 3em; border-radius: 4px"/>
+      <button id="clearButton" class="btn" (click)="clear()"                            style="height: 2em; width: 3em; padding: 0px; margin-bottom: 6px">Clear</button>
+      <input id="bgColorButton" type="color" [(ngModel)]="penColor" value="#FFFFFF"     style="height: 2em; width: 3em; border-radius: 4px"/>
       <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()" style="height: 2em; width: 3em; border-radius: 4px"/>
 
-      <input type="range" id="penSize" min="1" max="50" [(ngModel)]="penSize" style="width: 150px; margin-right: 5px; margin-left: 5px; display: inline;"/>
-      <span style="font-size: 1em; color: gold">{{penSize}}</span>
+      <input type="range" id="penSize" min="1" max="50" [(ngModel)]="penSize" style="width: 150px;display: inline;"/>
+      <span style="font-size: 1em; color: gold">{{penSize}}</span> <br>
 
-      <button (click)="setPenStyle(0)" class="btn" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Basic</button>
-      <button (click)="setPenStyle(1)" class="btn" style="height: 2em; width: 3em; margin-left: 5px; padding: 0px; vertical-align: top">Web</button>
-      <button (click)="setPenStyle(2)" class="btn" style="height: 2em; width: 4em; margin-left: 5px; padding: 0px; vertical-align: top">Pattern</button>
+      <button (click)="setPenStyle(0)" class="btn" style="height: 2em; width: 3em; padding: 0px;">Basic</button>
+      <button (click)="setPenStyle(1)" class="btn" style="height: 2em; width: 3em; padding: 0px;">Web</button>
+      <button (click)="setPenStyle(2)" class="btn" style="height: 2em; width: 4em; padding: 0px;">Pattern</button>
     </span>
   </span>
 
