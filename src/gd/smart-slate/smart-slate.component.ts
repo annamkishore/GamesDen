@@ -30,14 +30,16 @@ export class SmartSlateComponent implements OnInit {
   points: Array<any>;
   penStyle: PenStyleEnum;
 
+  showSettings = false;
   constructor() {
   }
 
   ngOnInit() {
     this.init();
     this.width = window.innerWidth;
-    const buttonHeight = document.getElementById('bgColorButton').offsetHeight / 2;
-    this.height = window.innerHeight - (buttonHeight * 3);
+    this.height = window.innerHeight;
+    // const buttonHeight = document.getElementById('bgColorButton').offsetHeight / 2;
+    // this.height = window.innerHeight - (buttonHeight * 3);
   }
 
   init() {
@@ -164,4 +166,7 @@ export class SmartSlateComponent implements OnInit {
     return ctx.createPattern(patternCanvas, 'repeat');
   }
 
+  showHideSettings() {
+    this.showSettings = !this.showSettings;
+  }
 }
