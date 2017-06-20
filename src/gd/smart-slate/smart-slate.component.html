@@ -4,23 +4,30 @@
   </canvas>
 </div>
 
-<div style="position: fixed; bottom: 10px; right: 10px;">
-  <span *ngIf="showSettings">
-    <span>
-      <button id="clearButton" class="btn" (click)="clear()"                            style="height: 2em; width: 3em; padding: 0px; margin-bottom: 6px">Clear</button>
-      <input id="bgColorButton" type="color" [(ngModel)]="penColor" value="#FFFFFF"     style="height: 2em; width: 3em; border-radius: 4px"/>
-      <input type="color" [(ngModel)]="bgColor" value="#000000" (change)="setBgColor()" style="height: 2em; width: 3em; border-radius: 4px"/>
+<div style="position: fixed; bottom: 10px; right: 10px; border: 0px solid yellow; display: flex;">
+  <div *ngIf="showSettings" style="align-self: flex-end">
+      <input  type="color" [(ngModel)]="penColor" class="btn" style="padding: 0px; height: 2em; width: 3em; box-sizing: border-box;"    />
+      <input  type="color" [(ngModel)]="bgColor"  (change)="setBgColor()" class="btn" style="padding: 0px; height: 2em; width: 3em; box-sizing: border-box;" />
 
-      <input type="range" id="penSize" min="1" max="50" [(ngModel)]="penSize" style="width: 150px;display: inline;"/>
-      <div style="font-size: 1em; color: gold; width: 4em; float: right">{{penSize}}</div><br>
+      <div class="tool-item" style="margin-left: 3px; margin-right: 6px; text-align: center; width: 2em; line-height: 2em; float: right; background-color: greenyellow; color: black">{{penSize}}</div>
+      <div style="margin: 5px"></div>
 
-      <button (click)="setPenStyle(0)" class="btn" style="height: 2em; width: 3em; padding: 0px;">Basic</button>
-      <button (click)="setPenStyle(1)" class="btn" style="height: 2em; width: 3em; padding: 0px;">Web</button>
-      <button (click)="setPenStyle(2)" class="btn" style="height: 2em; width: 4em; padding: 0px;">Pattern</button>
-    </span>
-  </span>
+      <button (click)="setPenStyle(0)" class="btn tool-item" style="padding: 0px;">Basic</button>
+      <button (click)="setPenStyle(1)" class="btn tool-item" style="padding: 0px;">Web</button>
+      <button (click)="setPenStyle(2)" class="btn tool-item" style="padding: 0px;">Patt</button>
+  </div>
 
-  <span style="float: right">
-    <i class="glyphicon glyphicon-cog" style="font-size: 2em; color: greenyellow; margin-left: 5px; vertical-align: bottom" (click)="showHideSettings()"></i>
-  </span>
+  <div>
+    <div>
+      <div>
+        <div *ngFor="let colorItem of colorBox" class="color-item" [ngStyle]="{'background-color': colorItem}" (click)="penColor = colorItem"></div>
+        <input type="range" id="penSize" min="1" max="50" [(ngModel)]="penSize" class="btn"
+               style="width: 8em; height: 2em; display: inline; box-sizing: border-box; padding: 0px; position: absolute; top: 40%; margin-right: 10px; transform: rotate(270deg)"/>
+      </div>
+    </div>
+    <div style="margin-top: 8px">
+      <i class="glyphicon glyphicon-refresh" style="font-size: 2em; color: greenyellow;" (click)="clear()"></i>
+      <i class="glyphicon glyphicon-cog" style="font-size: 2em; color: greenyellow;" (click)="showHideSettings()"></i>
+    </div>
+  </div>
 </div>

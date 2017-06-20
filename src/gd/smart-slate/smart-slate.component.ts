@@ -31,6 +31,9 @@ export class SmartSlateComponent implements OnInit {
   penStyle: PenStyleEnum;
 
   showSettings = false;
+
+  colorBox = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
   constructor() {
   }
 
@@ -57,8 +60,8 @@ export class SmartSlateComponent implements OnInit {
 
     this.ctx = this.canvasElement.getContext('2d');
 
-    this.penColor = '#FFFFFF';
-    this.bgColor = '#000000';
+    this.penColor = '#99FF99';
+    this.bgColor = '#9999FF';
     this.setBgColor();
     this.penSize = 10;
     this.penStyle = PenStyleEnum.Basic;
